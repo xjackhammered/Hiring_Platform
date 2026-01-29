@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environments
+.env
+.env.*
+venv/
+.venv/
+ENV/
+env/
+
+# Django
+*.log
+db.sqlite3
+staticfiles/
+media/
+
+# Migrations cache
+**/migrations/__pycache__/
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# OS
+Thumbs.db
+
+# Coverage / test
+htmlcov/
+.coverage
+coverage.xml
+.pytest_cache/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# Celery / Redis
+celerybeat-schedule
+celerybeat.pid
+
+# Secrets
+secrets.json
+*.pem
+*.key
