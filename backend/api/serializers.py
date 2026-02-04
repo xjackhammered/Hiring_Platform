@@ -12,7 +12,21 @@ class RegisterSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
 
-class JobSerializer(serializers.ModelSerializer):
+class UserSummarySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id","username"]
+
+class EmployerSummarySerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source="owner.username", read_only=True)
+    
+    class Meta:
+        model = EmployerProfile
+        fields = ["id", "username", "company_name"]
+
+class JobSummarySerializer(serializers.ModelSerializer):
+    employer = EmployerSummarySerializer
+    
     class Meta:
         model = Job
-        fields = "__all__"
+        fields = ["id", "title", "posted_at", "location", "employer"]
