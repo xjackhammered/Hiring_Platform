@@ -24,9 +24,26 @@ class EmployerSummarySerializer(serializers.ModelSerializer):
         model = EmployerProfile
         fields = ["id", "username", "company_name"]
 
+class CommentReadSerializer(serializers.ModelSerializer):
+    author = UserSummarySerializer(read_only=True)    
+    
+    class Meta:
+        model = Comment 
+        fields = ["id", "content", "author", "posted_at"]
+        
+
 class JobSummarySerializer(serializers.ModelSerializer):
-    employer = EmployerSummarySerializer
+    employer = EmployerSummarySerializer(read_only=True)  
     
     class Meta:
         model = Job
         fields = ["id", "title", "posted_at", "location", "employer"]
+
+class JobDetailSerializer(serializers.ModelSerializer):
+    employer = EmployerSummarySerializer(read_only=True)
+    comments = CommentReadSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Job
+        fields = ["id", "title", "description", "posted_at", "location", "employer","comments"]
+        
