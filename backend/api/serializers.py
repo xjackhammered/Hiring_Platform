@@ -46,4 +46,5 @@ class JobDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
         fields = ["id", "title", "description", "posted_at", "location", "employer","comments"]
-        
+
+## ADD COMMENTWRITE, JOBPOST WRITE AND CANDIDATEPROFILE SERIALIZER 
