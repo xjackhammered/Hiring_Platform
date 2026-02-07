@@ -48,3 +48,12 @@ class JobDetailSerializer(serializers.ModelSerializer):
         fields = ["id", "title", "description", "posted_at", "location", "employer","comments"]
 
 ## ADD COMMENTWRITE, JOBPOST WRITE AND CANDIDATEPROFILE SERIALIZER 
+class CommentPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ["content"]
+
+class JobPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Job
+        fields = ["title", "description", "location"]
